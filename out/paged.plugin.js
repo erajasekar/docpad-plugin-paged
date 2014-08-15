@@ -40,7 +40,7 @@ module.exports = function(BasePlugin) {
       var docpad, templateData;
       docpad = this.docpad;
       templateData = opts.templateData;
-      templateData.getPageUrl = function(pageNumber, document) {
+      templateData.getPagedUrl = function(pageNumber, document) {
         var err, page, pageDocument, pageId, pageUrl, relativePath, _ref1;
         if (document == null) {
           document = this.getDocument();
@@ -78,7 +78,7 @@ module.exports = function(BasePlugin) {
         page = document.get('page');
         result = '#';
         if (page.number < page.count - 1) {
-          result = this.getPageUrl(page.number + 1, document);
+          result = this.getPagedUrl(page.number + 1, document);
         }
         return result;
       };
@@ -99,7 +99,7 @@ module.exports = function(BasePlugin) {
         page = document.get('page');
         result = '#';
         if (page.number > 0) {
-          result = this.getPageUrl(page.number - 1, document);
+          result = this.getPagedUrl(page.number - 1, document);
         }
         return result;
       };
